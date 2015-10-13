@@ -942,7 +942,7 @@ module e3d_hotend_cap(diff=false) {
             cube([carriage_hole_sep+10, holder_depth, holder_height], center=true);
         }
     } else {
-        rotate([-180,0,0])
+        rotate([-90,0,0])
             difference() {
             translate([0,-holder_depth/2,holder_height/2])
             cube([carriage_hole_sep+10, holder_depth, holder_height], center=true);
@@ -951,16 +951,19 @@ module e3d_hotend_cap(diff=false) {
                 translate([0,0,ext_h2]) cylinder(d=ext_d1,h=ext_h1);
             translate([0,0,-1]) cylinder(d=ext_d2,h=ext_h2+1);
                 // holed
-                for (i=[-1,1]) {
-                    translate([i*(carriage_hole_sep-12),0,0]) {
-                        rotate([90,0,0])
-                        translate([0,4,layer_thickness+14])
-                        cylinder(r=m3_diameter/2, h=wade_block_depth+0.2+base_extra_depth, center=true,$fn=20);
-                    }
+                translate([carriage_hole_sep-12.4,0,-0.2]) {
+                    rotate([90,0,0])
+                    translate([0,6,layer_thickness+14])
+                    cylinder(r=m3_diameter/2, h=wade_block_depth+0.2+base_extra_depth, center=true,$fn=20);
+                }
+                translate([-11.7,0,-0.2]) {
+                    rotate([90,0,0])
+                    translate([0,6,layer_thickness+14])
+                    cylinder(r=m3_diameter/2, h=wade_block_depth+0.2+base_extra_depth, center=true,$fn=20);
                 }
             }
         }
     }
 }
 
-translate([0,-40,0]) e3d_hotend_cap();
+translate([-filament_feed_hole_offset-5, -6, wade_block_depth/2+0.1]) e3d_hotend_cap();
