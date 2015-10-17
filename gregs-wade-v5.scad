@@ -944,8 +944,8 @@ module e3d_hotend_cap(diff=false) {
     } else {
         rotate([-90,0,0])
             difference() {
-            translate([0,-holder_depth/2,holder_height/2])
-            cube([carriage_hole_sep+10, holder_depth, holder_height], center=true);
+            translate([0,-(holder_depth-base_extra_depth)/2,holder_height/2])
+            cube([carriage_hole_sep+10, holder_depth-base_extra_depth, holder_height], center=true);
             scale(1.03) union() {
                 // holder cut
                 translate([0,0,ext_h2]) cylinder(d=ext_d1,h=ext_h1);
