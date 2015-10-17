@@ -927,9 +927,9 @@ module e3d_hotend_holes ()
 
 module e3d_hotend_cap(diff=false) {
     ext_d1=16;
-    ext_h1=3.7;
+    ext_h1=3.8;
     ext_d2=12;
-    ext_h2=6;
+    ext_h2=5.6;
 
     holder_height = ext_h1 + ext_h2;
     holder_depth = wade_block_depth/2 + base_extra_depth;
